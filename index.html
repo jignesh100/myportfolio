@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/2c19a05879.js" crossorigin="anonymous"></script>
+</head>
+
+<body >
+  
+  
+  <!-- ---------------heder---------- -->
+    <div class="container">
+      <nav>
+        <img src="images/66'.jpg" class="logo" />
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+      </nav>
+     
+      <div class="header-text"  id="repo">
+        <h1 id="roleText">
+          <span>My</span> name is <br>
+          <span>Jignesh</span> Verulakar <br>
+          I am a 
+          <span id="role"></span>
+          <span  class="hide blinking-cursor">|</span>
+          
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  
+<script>
+  
+  const role = document.getElementById("role");
+  
+
+  const roles = ["Web Developer", "App Developer", "UI/UX Designer"];
+  
+ 
+  let currentRoleIndex = 0;
+  
+  
+  function typeText(element, text, index = 0) {
+    
+    if (index < text.length) {
+    
+      element.textContent += text.charAt(index);
+      
+      index++;
+   
+      setTimeout(() => typeText(element, text, index), 100);
+    } else {
+      
+      setTimeout(() => {
+        
+        function eraseText(element, index = text.length) {
+    
+          if (index > 0) {
+            element.textContent = text.substring(0, index - 1);
+            index--;
+            setTimeout(() => eraseText(element, index), 50);
+          } else {
+            setTimeout(() => {
+              currentRoleIndex++;
+              if (currentRoleIndex < roles.length) {
+                typeText(role, roles[currentRoleIndex]);
+              } else {
+                currentRoleIndex = 0;
+                typeText(role, roles[currentRoleIndex]);
+              }
+            }, 1000);
+          }
+        }
+        eraseText(role);
+      }, 2000);
+    }
+  }
+  
+  
+  typeText(role, roles[currentRoleIndex]);
+  </script>
+  
+ 
+  <script>
+    var sidemeu = document.getElementById("sidemenu");
+
+    function openmenu() {
+        sidemeu.style.right = "0";
+    }
+
+    function closemenu() {
+        sidemenu.style.right = '-200px';
+    }
+</script>
+  <!----About------------------>
+
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="images/new_pro.jpg" id="ima" >
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+            I'm Jignesh Verulakar, a tech enthusiast with a
+            knack for turning lines of code into captivating digital
+            experiences. Currently navigating the fascinating world of
+            Information Technology at Devang Patel Institute of Advance
+            Technology and Research (DEPSTAR), I'm on track to graduate in
+            June 2025 with a CGPA of 8.6.
+          </p>
+          <div class="tab-title">
+            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+            <p class="tab-links"  onclick="opentab('experience')">Experience</p>
+            <p class="tab-links"  onclick="opentab('education')">Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <ul>
+                <li><span>UI/UX</span><br>Craft engaging and user-centric interfaces.</li>
+                <li><span>Web Development</span><br>Bring websites to life with dynamic and responsive solutions.</li>
+                <li><span>App Development</span><br>Develop robust and user-friendly mobile applications.</li>
+                <li><span>Git/GitHub</span><br>Efficient version control and collaborative project management.</li>
+                <li><span>Programming Languages</span><br>Proficient in JAVA, Python, C++, C, JavaScript, and Kotlin.</li>
+              </ul>
+              
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li>
+                <span>May 2023 – June 2023</span><br>
+                <span>Escrow Infotech</span><br>
+                Intern as Android Developer at Escrow Infotech</li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2021 – present</span><br>
+                <span>Bachelor of Technology (B.Tech) in Information Technology (IT)</span><br>Devang Patel Institute of Advance Technology and Research (DEPSTAR)</li>CGPA:8.58
+              <li><span>2019 -2021</span><br>
+                <span>HSC</span><br>AB High School Navsari</li>CGPA:9.08 
+              <li><span>2018-2019</span><br>
+                <span>SSC</span><br>Sanskar Bharti</li>CGPA:9.7
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  var tablinks=document.getElementsByClassName("tab-links")
+  var tabcontents=document.getElementsByClassName("tab-contents")
+  
+  function opentab(tabname){
+    for(tablink of tablinks){
+      tablink.classList.remove('active-link')
+    }
+    for(tabcontent of tabcontents){
+      tabcontent.classList.remove('active-tab')
+    }
+    event.currentTarget.classList.add("active-link")
+    document.getElementById(tabname).classList.add("active-tab")
+  }
+</script>
+
+  <!---------Services-------------->
+
+  <div id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div>
+          <i class="fa-solid fa-code"></i>
+          <h2>Web Development</h2>
+          <p>
+            I specialize in crafting engaging and responsive websites,
+            ensuring a seamless user experience from design to deployment.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+        <div>
+          <i class="fa-brands fa-app-store"></i>
+          <h2>App Development</h2>
+          <p>
+            Dive into the world of mobile applications with my expertise in
+            developing Android apps that combine functionality with a sleek
+            user interface.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-palette"></i>
+          <h2>UI/UX</h2>
+          <p>
+            Elevate your digital presence with captivating UI/UX design,
+            ensuring your users have an immersive and visually appealing
+            experience.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-------portfolio---------->
+
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+        <div class="work">
+          <img src="images/logo_meetup.png" alt="" />
+          <div class="layer">
+            <h3>MeetUp : Video Conferencing Tool</h3>
+            Join me on Meet Up, where technology meets simplicity, making your
+            online meetings a joyous experience!
+            <a href="https://github.com/jignesh100/meetup"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/Screenshot 2024-01-26 121400.png" alt="" />
+          <div class="layer">
+            <h3>Yatra</h3>
+            <p>
+              Streamlined Smart Bus Management System app UI for efficient route planning, real-time tracking, and a seamless travel experience
+            </p>
+            <a href="https://www.figma.com/file/vPqYUJvtthWxJDsP1xES66/Travel-Booking?type=design&node-id=0%3A1&mode=design&t=lHkMXLjzbWmn7iVW-1"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="work">
+          <img src="images/Screenshot 2024-01-26 121752.png" alt="" />
+          <div class="layer">
+            <h3>Noise Buzz : Music player</h3>
+            <p>
+              Let NoiseBuzz be your go-to companion for a personalized and
+              dynamic musical adventure.
+            </p>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="btn">See more</a>
+    </div>
+  </div>
+
+  <!-- contect -->
+
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1>Contact ME</h1>
+          <p>
+            <i class="fa-solid fa-envelope"></i> jigneshverulakar@gmail.com
+          </p>
+          <p><i class="fa-solid fa-mobile-button"></i> 9104171101</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/jignesh.verulakar/"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/g_ganesh100/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="www.linkedin.com/in/jignesh-verulkar"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+          <a href="images/jignesh_Resume.pdf" download class="btn btn2">
+            Download CV</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required />
+            <input type="email" name="Email" placeholder="Your Email" required />
+            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+          </form>
+          <span id="msg"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwahI-Ymwu1WnEIECHQW7BPMU0FokhbTSul_Zh0yjG5KOfVbOrkKy8Na6JuR7mc6nWe/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function () {
+                    msg.innerHTML = ''
+                }, 5000)
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message))
+    })
+</script>
+
+  <!-- copyright -->
+  <div class="copyright">
+    <p>&copy; 2024 Jignesh All rights reserved.</p>
+    <p>Designed and developed by Jignesh.</p>
+  </div>
+
+</body>
+
+</html>
